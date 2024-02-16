@@ -166,50 +166,44 @@ public class Ej2{
     }
 
     //9
-    public static int[] evenCollector(int[] array, int i, int[] evens, int j,int k){
-       if(i == array.length){
-        evens = new int[j];
-        if(j == 0){
-            return evens;
+    public static ArrayList<Integer> evenCollector(int[] array,int i, ArrayList<Integer> result){
+        if(i == array.length){
+            return result;
         }
         else{
-            if(array[k] != -1){
-                evens[j-1] = array[k];
-                return evenCollector(array, i, evens, --j, --k);
+            if(array[i]%2 == 0){
+                result.add(array[i]);
             }
-            else{
-                return evenCollector(array, i, evens, j, --k);
-            }
+            return evenCollector(array, ++i, result);
         }
-        // return evenCollector(array, ++i, evens, j);
-       }
-       else{
-        if(array[i] > 1 && array[i]%2 == 0){
-            array[i] = i;
-            
-            j++;
-            System.out.println("es una loca");
-        }
-        else{
-            array[i] = -1;
-            System.out.println("no es una loca");
-        }
-        return evenCollector(array, ++i, evens, j,k);
-       }
+    }
+
+    public static ArrayList<Integer> evenCollector(int[] array){
+        ArrayList arrayl = new ArrayList<>();
+        return evenCollector(array,0,arrayl);
     }
     
-        public static int[] evenCollector(int[] array){
-            return evenCollector(array, 0, array, 0, array.length - 1);
-        }
-
     //10
-    public static int[] evenList(int[] array,int[] even_arr,int i){
-        return array;
+    public static ArrayList<Integer> evenList(int n, ArrayList<Integer> array){
+        if(n == 0){
+            return array;
+        }
+        else{
+            if(n%2 == 0){
+                array.add(n);
+                return evenList(n-2,array);
+            }
+            else{
+                return evenList(n-1,array);
+            }
+        }
     }
 
-    public static int[] evenList(int[] array){
-        return array;
+    public static ArrayList<Integer> evenList(int n){
+        return evenList(n, new ArrayList<Integer>());
     }
+
+    //11
 
     
     static int[] array = {1,2,3,4,5,6,7,8,9,10};
