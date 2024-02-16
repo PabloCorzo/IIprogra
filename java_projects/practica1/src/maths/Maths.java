@@ -15,6 +15,7 @@ public class Maths{
 
     /*
      * Metodo de aproximacion de pi
+     * @param int iteraciones iteraciones hechas
      * @return double aproximacion de pi
      */
     public static double piAproximateIterative(int iterations){
@@ -36,28 +37,38 @@ public class Maths{
 
     // RECURSIVE
 
-    // public static double piAproximateRecursive(int iterations, int inside, int thrown){
-    //     if(thrown == iterations){
-    //         return 4*((double)inside/(double)iterations);
-    //     } 
-    //     else{
-    //         thrown++;
-    //         // System.out.println(i);
-    //         double x = r.nextDouble() * 1;
-    //         double y = r.nextDouble() * 1;
-    //         if(((Math.pow(x, 2))+(Math.pow(y, 2))) <= 1){
-    //             inside++;
-    //         }
-    //         return piAproximateRecursive(iterations,inside,thrown);
-    //     }
-    // }
+    /*
+     * Metodo recursivo de aproximacion de pi
+     * @return double aproximacion de pi
+     * @param int iteraciones iteraciones hechas
+     */
+    public static double piAproximateRecursive(int iterations, int inside, int thrown){
+        if(thrown == iterations){
+            return 4*((double)inside/(double)iterations);
+        } 
+        else{
+            thrown++;
+            // System.out.println(i);
+            double x = r.nextDouble() * 1;
+            double y = r.nextDouble() * 1;
+            if(((Math.pow(x, 2))+(Math.pow(y, 2))) <= 1){
+                inside++;
+            }
+            return piAproximateRecursive(iterations,inside,thrown);
+        }
+    }
 
     // RECURSIVE
-    // WHEN CALLED WITH ITERATIONS AS ONLY PARAM, IT STARTS ANEW
+    // WHEN CALLED WITH ITERATIONS AS ONLY PARAM, IT STARTS AS NEW
     
-    // public static double piAproximateRecursive(int iterations){
-    //     return piAproximateRecursive(iterations, 0,0);
-    // }
+    /*
+     * Metodo recursivo de aproximacion de pi
+     * @return double aproximacion de pi
+     * @param int iteraciones iteraciones hechas
+     */
+    public static double piAproximateRecursive(int iterations){
+        return piAproximateRecursive(iterations, 0,0);
+    }
 
     /*
      * Metodo main
