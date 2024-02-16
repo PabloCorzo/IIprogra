@@ -1,4 +1,5 @@
 import java.util.Arrays;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 
@@ -204,11 +205,51 @@ public class Ej2{
     }
 
     //11
+    public static int product(int[] array1,int[] array2, int sum, int i){
+        if(i == array.length){
+            return sum;
+        }
+        else{
+            sum += array[i] * array2[i];
+            return product(array1, array2, sum, ++i);
+        }
+    }
 
+    public static int product(int[] array, int[] array2){
+        return product(array, array2, 0, 0);
+    }
+
+    //12
+    public static int fibonacci(int n, int i, int j){
+        if(n == 0){
+            return j + i;
+        }
+        else{
+            j += i;
+            i = j - i;
+            return fibonacci(--n, i, j);
+        }
+    }
+
+    public static int fibonacci(int n){
+        return fibonacci(n,1,0);
+    }
+
+    //13 and 14
+    public static void fibonacci1213(){
+        double twelve = (double)fibonacci(12);
+        double thirteen = (double)fibonacci(13);
+        System.out.println("(1+raiz(5))/2 = " + (1+Math.sqrt(5))/2);
+        System.out.println("Razon entre elementos 12 y 13 de fibonacci: " +thirteen/twelve);
+        System.out.println("La razon entre 2 elementos consecutivos de la secuencia de fibonacci se acerca cada vez mas a la razon aurea ");
+    }
     
     static int[] array = {1,2,3,4,5,6,7,8,9,10};
     static double[] array2 = {1.1,2,3,4,5,6,7,8,9,10};
     public static void main(String[] args) {
-        System.out.println(Arrays.toString(evenCollector(array)));
+        // System.out.println(evenList(14));
+        // System.out.println(product(array, array));
+        System.out.println(fibonacci(5));
+        fibonacci1213();
     }
 }
