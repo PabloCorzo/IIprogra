@@ -56,7 +56,7 @@ public class IterativeEj2 {
     //6
     public static double deviation(int[] array){
         double sum = 0;
-        System.out.println((double)55/10);
+        // System.out.println((double)55/10);
         double mean = (double)sumOfElements(array)/array.length;
         double[] squareddiffs = new double[array.length];
         for(int i = 0; i < array.length; i++){
