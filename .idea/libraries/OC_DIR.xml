@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="OC_DIR">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/java_projects/practica1/OC_DIR/member-search-index.zip!/" />
+      <root url="jar://$PROJECT_DIR$/java_projects/practica1/OC_DIR/type-search-index.zip!/" />
+      <root url="jar://$PROJECT_DIR$/java_projects/practica1/OC_DIR/package-search-index.zip!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

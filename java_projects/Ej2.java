@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -177,11 +178,26 @@ public class Ej2{
             }
             return evenCollector(array, ++i, result);
         }
+<<<<<<< HEAD
     }
 
     public static ArrayList<Integer> evenCollector(int[] array){
         ArrayList arrayl = new ArrayList<>();
         return evenCollector(array,0,arrayl);
+=======
+       }
+       else{
+        if(array[i] > 1 && array[i]%2 == 0){
+            array[i] = i;
+            
+            j++;
+        }
+        else{
+            array[i] = -1;
+        }
+        return evenCollector(array, ++i, evens, j,k);
+       }
+>>>>>>> 93d93de689d7c6e529a315be0b99ec6910d3bd22
     }
     
     //10
@@ -246,10 +262,79 @@ public class Ej2{
     
     static int[] array = {1,2,3,4,5,6,7,8,9,10};
     static double[] array2 = {1.1,2,3,4,5,6,7,8,9,10};
+
+    //EJERCICIO 4
+    static double integralEXCuadrado(double limInf, double limSup, double h){
+        if(limInf >= limSup){
+            return 0;
+        }
+        else{
+            limInf += h;
+            double x = Math.pow(Math.exp(1), Math.pow(limInf, 2));
+            return x + integralEXCuadrado(limInf, limSup, h);
+        }
+    }
+
+    //EJERCICIO 6
+    public static int sumaCodigos(String str){
+        if(str.isEmpty()){
+            return 0;
+        }
+        else{
+            int x = (int)str.charAt(0);
+            return x + sumaCodigos(str.substring(1));
+        }
+    }
+    
+
+    //EJERCICIO 7
+
+    public static String cifrarCadena(String str, int desplazamiento){
+        
+        if(str.isEmpty()){
+            return "";
+        }
+        else{
+            if(letters.get(letters.indexOf(str.charAt(0)+"")).equalsIgnoreCase(" ")){
+                return " " + cifrarCadena(str, desplazamiento);
+            }   
+            else if(letters.indexOf(str.charAt(0)+"") == -1){
+                return str.charAt(0) + cifrarCadena(str.substring(1),desplazamiento);
+            }
+            else{
+                int newindex = letters.indexOf(str.charAt(0)+"") + desplazamiento;
+                if(newindex >= letters.size()){
+                    newindex -= letters.size();
+                }    
+                return letters.get(newindex) + cifrarCadena(str.substring(1), desplazamiento);
+            }    
+        }
+    }
+    public static String conCodigoPar(String str){
+        if(str.isEmpty()){
+            return "";
+        }
+        else{
+            if(str.charAt(0)%2 == 0){
+                return str.charAt(0) + conCodigoPar(str.substring(1));
+            }
+            else{
+                return conCodigoPar(str.substring(1));
+            }
+        }
+    }
+    
+    static ArrayList<String> letters = new ArrayList<String>(Arrays.asList("a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", 
+    "n", "ñ", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"));
+    
     public static void main(String[] args) {
+<<<<<<< HEAD
         // System.out.println(evenList(14));
         // System.out.println(product(array, array));
         System.out.println(fibonacci(5));
         fibonacci1213();
+=======
+        System.out.println(conCodigoPar("Llego mañana"));
+>>>>>>> 93d93de689d7c6e529a315be0b99ec6910d3bd22
     }
 }
