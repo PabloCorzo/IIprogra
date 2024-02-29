@@ -83,7 +83,7 @@ public class LambdaEj2{
      ArrayList<Integer> arr = new ArrayList<>();
      list.stream()
      .filter(e -> e%2 == 0)
-     .forEach(e -> arr.add(e));
+     .forEach(arr::add);
      return arr;
     }
 
