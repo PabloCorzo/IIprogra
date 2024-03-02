@@ -130,7 +130,7 @@ public class LambdaEj2{
         if(n == 0) return 0;
         return Stream.iterate(new int[]{0, 1}, fib -> new int[]{fib[1], fib[0] + fib[1]})
         .limit(n)
-        .reduce((a, b) -> b)
+    .reduce((a, b) -> b)
         .orElse(new int[]{0,1})[1];
     }
 
