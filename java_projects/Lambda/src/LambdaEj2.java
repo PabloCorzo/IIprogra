@@ -19,39 +19,51 @@ public class LambdaEj2{
     //3
     static int power(int base, int power)
     {
-        IntStream is = IntStream.rangeClosed(1, power).map(e -> base);
-        int product = 1;
-        int[] arr = is.toArray();
-        for(int i: arr){
-            product *= i;
-        }
-        return product;
+        return IntStream.rangeClosed(1, power)
+        .map(e -> base)
+        .reduce((e,d) -> e*d)
+        .orElse(1);
     }
-
 
     
     //4
     static int sumOfList(List<Integer> list)
     {
-        return list.stream().mapToInt(Integer :: intValue).sum();
+        return list
+        .stream()
+        .mapToInt(Integer :: intValue)
+        .sum();
     }
 
 
     //5
     static double avg(List<Integer> list)
     {
-        return list.stream().mapToInt(Integer :: intValue).average().orElse(0);
+        return list
+        .stream()
+        .mapToInt(Integer :: intValue).
+        average()
+        .orElse(0);
     }
     static double avgDouble(List<Double> list)
     {
-        return list.stream().mapToInt(Double :: intValue).average().orElse(0);
+        return list
+        .stream()
+        .mapToInt(Double :: intValue)
+        .average()
+        .orElse(0);
     }
 
     //6
     static double deviation(List<Integer> list)
     {
         double x = avg(list);
-        double average = avgDouble(list.stream().mapToDouble(Integer :: doubleValue).map(e -> Math.pow(e - x, 2)).boxed().collect(Collectors.toList()));
+        double average = avgDouble(list
+        .stream()
+        .mapToDouble(Integer :: doubleValue)
+        .map(e -> Math.pow(e - x, 2))
+        .boxed()
+        .collect(Collectors.toList()));
         return Math.sqrt(average);
         // return 0;
     }
@@ -112,38 +124,52 @@ public class LambdaEj2{
 
 
     //12
+    //REDO
     static int fibonacci(int n)
     {
-        if(n == 0) return 0;
-        if(n == 1) return 1;
-        IntUnaryOperator fib = (x) -> {
-                int[] fib_vals = new int[x+1];
-                fib_vals[0] = 0; fib_vals[1] = 1;
-                for(int i = 2; i <= x; i++){
-                    fib_vals[i] = fib_vals[i-1] + fib_vals [i-2];
-                }
-                return fib_vals[x];
-        };
-        return fib.applyAsInt(n);
-//        BiFunction<Integer,Integer,Integer>
+        return IntStream
+        .iterate(new int[]{0,1}, new int[]{0,1}, fib ->new int[]{fib[1], fib[0]+fib[1]})
+        .limit(n)
+        .mapToInt()
+        
+        // .reduce((int i,int j) -> j+=i)
+        // .orElse(1);
+        //iterate??
+        //     if(n == 0) return 0;
+    //     if(n == 1) return 1;
+    //     IntUnaryOperator fib = (x) -> {
+    //             int[] fib_vals = new int[x+1];
+    //             fib_vals[0] = 0; fib_vals[1] = 1;
+    //             for(int i = 2; i <= x; i++){
+    //                 fib_vals[i] = fib_vals[i-1] + fib_vals [i-2];
+    //             }
+    //             return fib_vals[x];
+    //     };
+    //     return fib.applyAsInt(n);
     }
+    
 
 
     static List<Integer> list2 = List.of(1,2,3,4,5, 6, 7, 8, 9,10);
 
     public static void main(String[] args) {
-        System.out.println(sumOfN(10));
-        System.out.println(factorial(6));
-        System.out.println(power(2, 3));
-        System.out.println(power(5, 2));
-        System.out.println(power(2, 5));
-        System.out.println(avg(list2));
-        System.out.println(deviation(list2));
-        System.out.println(evenSum(10));
-        System.out.println(evenSumofList(list2));
-        System.out.println(getEvenList(list2));
-        System.out.println(getEvens(16));
-        System.out.println(listProduct(list2,list2));
-        System.out.println(fibonacci(5));
+        // System.out.println(sumOfN(10));
+        // System.out.println(factorial(6));
+        // System.out.println(power(2, 3));
+        // System.out.println(power(5, 2));
+        // System.out.println(power(2, 5));
+        // System.out.println(avg(list2));
+        // System.out.println(deviation(list2));
+        // System.out.println(evenSum(10));
+        // System.out.println(evenSumofList(list2));
+        // System.out.println(getEvenList(list2));
+        // System.out.println(getEvens(16));
+        // System.out.println(listProduct(list2,list2));
+        System.out.println("0: " + fibonacci(0));
+        System.out.println("1: " + fibonacci(1));
+        System.out.println("2: " + fibonacci(2));
+        System.out.println("3: " + fibonacci(3));
+        System.out.println("4: " + fibonacci(4));
+        System.out.println("5: " + fibonacci(5));
     }
 }
