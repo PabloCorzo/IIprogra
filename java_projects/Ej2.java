@@ -1,8 +1,6 @@
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
+
 
 public class Ej2{
 
@@ -178,26 +176,6 @@ public class Ej2{
             }
             return evenCollector(array, ++i, result);
         }
-<<<<<<< HEAD
-    }
-
-    public static ArrayList<Integer> evenCollector(int[] array){
-        ArrayList arrayl = new ArrayList<>();
-        return evenCollector(array,0,arrayl);
-=======
-       }
-       else{
-        if(array[i] > 1 && array[i]%2 == 0){
-            array[i] = i;
-            
-            j++;
-        }
-        else{
-            array[i] = -1;
-        }
-        return evenCollector(array, ++i, evens, j,k);
-       }
->>>>>>> 93d93de689d7c6e529a315be0b99ec6910d3bd22
     }
     
     //10
@@ -328,13 +306,10 @@ public class Ej2{
     "n", "ñ", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"));
     
     public static void main(String[] args) {
-<<<<<<< HEAD
         // System.out.println(evenList(14));
         // System.out.println(product(array, array));
         System.out.println(fibonacci(5));
         fibonacci1213();
-=======
         System.out.println(conCodigoPar("Llego mañana"));
->>>>>>> 93d93de689d7c6e529a315be0b99ec6910d3bd22
     }
 }

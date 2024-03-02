@@ -3,6 +3,7 @@ import java.util.function.*;
 import java.util.Random;
 import java.util.stream.DoubleStream;
 import java.util.stream.IntStream;
+import java.util.stream.Stream;
 
 public class LambdaEjercicios{
     /*
@@ -61,32 +62,23 @@ public class LambdaEjercicios{
     * Ejercicio 16.
     * Resuelva el ejercicio 13 utilizando, no sólo expresiones lambda sino también streams.
     * */
-    public static double integralWithStreams(double a, double b, double h, Function<Double,Double> function)
+    //13. Calcule el cociente entre el decimo tercer y el decimo segundo elementode la sucesión de Fibonacci, y compare el resultado con 1+√5/2 
+    public static double goldenRatio()
     {
-        return DoubleStream
-                .of(a,b)
-                .boxed()
-                .
+        double fib_13 =  Stream.iterate(new int[]{0, 1}, fib -> new int[]{fib[1], fib[0] + fib[1]})
+        .limit(13)
+        .reduce((a, b) -> b)
+        .orElse(new int[]{0,1})[1];
+        double fib_12 =  Stream.iterate(new int[]{0, 1}, fib -> new int[]{fib[1], fib[0] + fib[1]})
+        .limit(13)
+        .reduce((a, b) -> b)
+        .orElse(new int[]{0,1})[0];
+        return fib_13/fib_12;
 
     }
 
-    /*
-    * Ejercicio 17.
-    * Realice los siguientes apartados:
-    * 1.Cree la clase Persona con los atributos nombre de tipo String y fecha-DeNacimiento de tipo LocalDate,
-    * y con un método que calcule la edad de la persona en años con la siguiente cabecera: public long calcularEdad()
-    * 2.Cree la clase Personas con un método que permita añadir personas
-    * con la cabecera que se muestra a continuación: public void annadirPersona(Persona persona)
-    * 3.Utilizando expresiones lambda, implemente los siguientes métodos dentro de la clase Personas.
-    * a) Obtención de la persona más joven, de acuerdo con la cabecera que se muestra a continuación:
-    * public Persona elMasJoven()
-    * b) Cálculo de la suma de las edades, con la siguiente cabecera:
-    * public long calcularSumaEdades()
-    * c) Obtención de la edad mínima, con la cabecera que se muestra a continuación:
-    * public long calcularEdadMinima()
-    * d ) Cálculo de la media de edad, con la siguiente cabecera:
-    * public double calcularMediaDeEdad()
-    * */
-
+  public static void main(String[] args) {
+    System.out.println(goldenRatio());
+  }
 
 }
