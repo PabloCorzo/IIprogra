@@ -2,10 +2,10 @@
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.prograII</groupId>
-  <artifactId>IIprogra/java_projects/hilbert</artifactId>
+  <artifactId>hilbert</artifactId>
   <packaging>jar</packaging>
   <version>1.0-SNAPSHOT</version>
-  <name>IIprogra/java_projects/hilbert</name>
+  <name>hilbert</name>
   <url>http://maven.apache.org</url>
   <dependencies>
     <dependency>
