@@ -1,4 +1,3 @@
-import java.util.function.*;
 import java.util.*;
 import java.util.stream.*;
 
@@ -124,7 +123,6 @@ public class LambdaEj2{
 
 
     //12
-    //REDO
     static int fibonacci(int n)
     {
         if(n == 0) return 0;

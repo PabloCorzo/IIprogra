@@ -1,0 +1,1 @@
+mvn archetype:generate -DgroupId=com.prograII -DartifactId=IIprogra/java_projects/prueba -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
