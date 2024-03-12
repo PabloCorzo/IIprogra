@@ -1,13 +1,7 @@
-package com.prograII;
-
-/**
- * Hello world!
- *
- */
-public class App 
-{
-    public static void main( String[] args )
-    {
-        System.out.println( "Hello World!" );
+package com. com.PrograII;
+public class App {
+    public static void main(String[] args){
+        // TODO code application logic here
+        FH f=new FH();
     }
 }
