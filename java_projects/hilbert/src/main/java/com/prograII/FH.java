@@ -1,4 +1,4 @@
-package com.PrograII;
+package com.prograII;
 import acm.graphics.GTurtle;
 public class FH extends GTurtle{
     void H(int n){
@@ -43,7 +43,7 @@ public class FH extends GTurtle{
         // Bajar la pluma de la tortuga para que deje un
         // rastro al momento de desplazarse.
         penDown();
-        H(3);
+        H(10);
     }
     public FH(){
         this.start();
