@@ -1,0 +1,1 @@
+typeSearchIndex = [{"l":"All Classes","url":"allclasses-index.html"},{"p":"org.pr2","l":"App"},{"p":"org.pr2.dominio","l":"Contacto"},{"p":"org.pr2.interfaces","l":"Interfaz"},{"p":"org.pr2.dominio","l":"Libreta"}]

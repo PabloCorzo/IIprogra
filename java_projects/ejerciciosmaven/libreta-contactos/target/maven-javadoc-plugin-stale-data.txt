@@ -1,0 +1,54 @@
+@options
+@packages
+-classpath
+'C:/Users/Pablo/.m2/repository/org/jopendocument/jOpenDocument/1.3/jOpenDocument-1.3.jar'
+-encoding
+'UTF-8'
+-protected
+-source
+'1.7'
+-sourcepath
+'C:/Users/Pablo/IIprogra/ejerciciosmaven/libreta-contactos/src/main/java'
+-author
+-bottom
+'Copyright &#169; 2024. All rights reserved.'
+-charset
+'UTF-8'
+-d
+'C:/Users/Pablo/IIprogra/ejerciciosmaven/libreta-contactos/target/site/apidocs'
+-docencoding
+'UTF-8'
+-doctitle
+'libreta-contactos 1.0-SNAPSHOT API'
+-linkoffline
+'https://docs.oracle.com/javase/7/docs/api' 'C:/Users/Pablo/IIprogra/ejerciciosmaven/libreta-contactos/target/javadoc-bundle-options'
+-use
+-version
+-windowtitle
+'libreta-contactos 1.0-SNAPSHOT API'
+org.pr2
+org.pr2.dominio
+org.pr2.interfaces
+C:\Users\Pablo\.m2\repository\org\jopendocument\jOpenDocument\1.3\jOpenDocument-1.3.jar = 1375216843000
+C:\Users\Pablo\IIprogra\ejerciciosmaven\libreta-contactos\src\main\java = 1710701778871
+C:\Users\Pablo\IIprogra\ejerciciosmaven\libreta-contactos\target\site\apidocs\allclasses-index.html = 1710709308351
+C:\Users\Pablo\IIprogra\ejerciciosmaven\libreta-contactos\target\site\apidocs\allclasses.html = 1710709308369
+C:\Users\Pablo\IIprogra\ejerciciosmaven\libreta-contactos\target\site\apidocs\allpackages-index.html = 1710709308352
+C:\Users\Pablo\IIprogra\ejerciciosmaven\libreta-contactos\target\site\apidocs\constant-values.html = 1710709308236
+C:\Users\Pablo\IIprogra\ejerciciosmaven\libreta-contactos\target\site\apidocs\deprecated-list.html = 1710709308352
+C:\Users\Pablo\IIprogra\ejerciciosmaven\libreta-contactos\target\site\apidocs\element-list = 1710709308149
+C:\Users\Pablo\IIprogra\ejerciciosmaven\libreta-contactos\target\site\apidocs\help-doc.html = 1710709308426
+C:\Users\Pablo\IIprogra\ejerciciosmaven\libreta-contactos\target\site\apidocs\index-all.html = 1710709308335
+C:\Users\Pablo\IIprogra\ejerciciosmaven\libreta-contactos\target\site\apidocs\index.html = 1710709308369
+C:\Users\Pablo\IIprogra\ejerciciosmaven\libreta-contactos\target\site\apidocs\jquery-ui.overrides.css = 1710709308476
+C:\Users\Pablo\IIprogra\ejerciciosmaven\libreta-contactos\target\site\apidocs\member-search-index.js = 1710709308335
+C:\Users\Pablo\IIprogra\ejerciciosmaven\libreta-contactos\target\site\apidocs\member-search-index.zip = 1710709308335
+C:\Users\Pablo\IIprogra\ejerciciosmaven\libreta-contactos\target\site\apidocs\overview-summary.html = 1710709308382
+C:\Users\Pablo\IIprogra\ejerciciosmaven\libreta-contactos\target\site\apidocs\overview-tree.html = 1710709308301
+C:\Users\Pablo\IIprogra\ejerciciosmaven\libreta-contactos\target\site\apidocs\package-search-index.js = 1710709308326
+C:\Users\Pablo\IIprogra\ejerciciosmaven\libreta-contactos\target\site\apidocs\package-search-index.zip = 1710709308331
+C:\Users\Pablo\IIprogra\ejerciciosmaven\libreta-contactos\target\site\apidocs\script.js = 1710709308434
+C:\Users\Pablo\IIprogra\ejerciciosmaven\libreta-contactos\target\site\apidocs\search.js = 1710709308439
+C:\Users\Pablo\IIprogra\ejerciciosmaven\libreta-contactos\target\site\apidocs\stylesheet.css = 1710709308431
+C:\Users\Pablo\IIprogra\ejerciciosmaven\libreta-contactos\target\site\apidocs\type-search-index.js = 1710709308333
+C:\Users\Pablo\IIprogra\ejerciciosmaven\libreta-contactos\target\site\apidocs\type-search-index.zip = 1710709308335
