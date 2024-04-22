@@ -1,10 +1,9 @@
 CALCULADOR DE DISTANCIAS DE PALABRAS
 
-El codigo consiste en la introduccion de dos palabras de misma longitud para calcular en cuantas posiciones son diferentes sus caracteres (Similar a la distancia de Hamming, pero con cualquier tipo de String)
-
+El codigo consiste en la introduccion de dos palabras para calcular el minimo numero de cambios posibles para convertir la segunda palabra en la primera
 INSTALACION Y USO 
- 1. Instalar el directorio practica4
- 2. Para modificar las palabras, cambiar los valores s1 y s2 en src/app/Main.java, lineas 13 y 17
+ 1. Instalar el directorio practica4 y tener una JVM
+ 2. Para modificar las palabras, cambiar los valores s1 y s2 en src/app/Main.java, linea 12
  3. Para ejecutar, llamar desde el directorio raiz los siguientes comandos usando git bash:
   make limpiar
   make compilar
