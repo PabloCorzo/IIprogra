@@ -22,6 +22,11 @@ public class Graph<V>{
      * @return `true` si no estaba anteriormente y `false` en caso contrario.
      */
     public boolean addVertex(V v){
+        //existence checker
+        if(this.containsVertex(v)) return false;
+
+        adjacencyList.put(v, new HashSet<>());
+
         return true; //Este código hay que modificarlo.
     }
 
@@ -34,6 +39,10 @@ public class Graph<V>{
      * @return `true` si no existía el arco y `false` en caso contrario.
      */
     public boolean addEdge(V v1, V v2){
+        //checks if edge existed beforehand
+        if(this.obtainAdjacents(v1).contains(v2)) return false;
+
+        this.adjacencyList.get(v1).add(v2);
         return true; //Este código hay que modificarlo.
     }
 
@@ -44,6 +53,7 @@ public class Graph<V>{
      * @return conjunto de vértices adyacentes.
      */
     public Set<V> obtainAdjacents(V v) throws Exception{
+        //PREGUNTAR QUE EXCEPCION ES NECESARIA -> v no existe?
         return null; //Este código hay que modificarlo.
     }
 
@@ -54,7 +64,7 @@ public class Graph<V>{
      * @return `true` si `v` es un vértice del grafo.
      */
     public boolean containsVertex(V v){
-        return true; //Este código hay que modificarlo.
+        return (adjacencyList.containsKey(v) || adjacencyList.containsValue(v));
     }
 
     /**
