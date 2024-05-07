@@ -1,8 +1,13 @@
-package pr2;
+package util;
 
 import java.util.Set;
+import java.util.Stack;
 import java.util.HashSet;
+import java.util.LinkedList;
 import java.util.Map;
+import java.util.NoSuchElementException;
+import java.util.PriorityQueue;
+import java.util.Queue;
 import java.util.HashMap;
 import java.util.List;
 import java.util.ArrayList;
@@ -39,6 +44,10 @@ public class Graph<V>{
      * @return `true` si no existía el arco y `false` en caso contrario.
      */
     public boolean addEdge(V v1, V v2){
+        //checks if vertex exists
+        if(!this.containsVertex(v1)) this.addVertex(v1);
+        if(!this.containsVertex(v2)) this.addVertex(v2);
+
         //checks if edge existed beforehand
         if(this.obtainAdjacents(v1).contains(v2)) return false;
 
@@ -52,9 +61,9 @@ public class Graph<V>{
      * @param v vértice del que se obtienen los adyacentes.
      * @return conjunto de vértices adyacentes.
      */
-    public Set<V> obtainAdjacents(V v) throws Exception{
-        //PREGUNTAR QUE EXCEPCION ES NECESARIA -> v no existe?
-        return null; //Este código hay que modificarlo.
+    public Set<V> obtainAdjacents(V v) throws NoSuchElementException{
+        if(!this.containsVertex(v)) throw new NoSuchElementException("Vertice "+v+" no existe en el grafo.");
+        return this.adjacencyList.get(v);
     }
 
     /**
@@ -73,7 +82,12 @@ public class Graph<V>{
      */
     @Override
     public String toString(){
-        return ""; //Este código hay que modificarlo.
+        String s = "";
+        for(V v: this.adjacencyList.keySet()){
+            s += "El vertice " + v + "tiene los vertices:";
+            s += this.obtainAdjacents(v).toString();
+        }
+        return s; 
     }
 
     /**
@@ -86,6 +100,72 @@ public class Graph<V>{
      * entre `v1` y `v2`
      **/
     public List<V> shortestPath(V v1, V v2){
-        return null; // Esto código hay que modificarlo.
+        //add to queue 1
+        //queep a queue 2 with "pointers": if 1 leads to 2 and 3, the queue (or list) should be [1,1,1]
+        //when reached final vertex, see queue 2 to point back 
+        Queue<V> q = new PriorityQueue<>();
+        ArrayList<V> q2 = new ArrayList<>();
+        HashMap<V,V> q3 = new HashMap<>();
+        HashMap<V,Boolean> visitedmap = new HashMap<>();
+        boolean found = false;
+        for(V v : this.adjacencyList.keySet()) visitedmap.put(v, false);
+        q.add(v1);
+        visitedmap.put(v1, true);
+        q2.add(v1);
+        q3.put(v1, v1);
+        System.out.println(1);
+        while (!found) {
+            V i = q.peek();
+            for(V v : this.obtainAdjacents(i)){
+                System.out.println("testing " + i);
+                if(v == v2){
+                    q2.add(i);
+                    q3.put(v,i);
+                    found = true;
+                    System.out.println("broke boy");
+                    break;
+                }
+                if(!visitedmap.get(v)){
+                System.out.println("added "+ v);
+                q.add(v);
+                q2.add(i);
+                q3.put(v, i);
+                visitedmap.put(v, true);
+                }
+                q.remove();
+            
+        }
+    }   
+    //[1,2,3,4,5,6,7]
+    //[1,1,1,2,3,4,6]
+    V trackback = v2;
+    Stack<V> reversepath = new Stack<>();
+    ArrayList<V> path = new ArrayList<>(); 
+    path.add(v1);
+    while(trackback != v1){
+        reversepath.add(trackback);
+        trackback = q3.get(trackback);
+    }
+    while(!reversepath.isEmpty()){
+        path.add(reversepath.pop());
+    }
+        return path;
+    }
+
+    public static void main(String[] args) {
+        Graph<Integer> g = new Graph<>();
+        g.addVertex(1);
+        g.addVertex(2);
+        g.addVertex(3);
+        g.addVertex(4);
+        g.addVertex(5);
+        g.addVertex(6);
+        g.addEdge(1, 2);
+        g.addEdge(2, 3);
+        g.addEdge(3, 4);
+        g.addEdge(4, 5);
+        g.addEdge(5, 6);
+        g.addEdge(6, 1);
     }
 }
+

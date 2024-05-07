@@ -1,4 +1,4 @@
-package pr2;
+package util;
 
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.assertFalse;
@@ -27,13 +27,16 @@ public class GraphTest{
         g.addEdge(2, 3);
         g.addEdge(3, 4);
         g.addEdge(5, 4);
+        System.out.println("vertex got added");
 
         // We build the expected path
         List<Integer> expectedPath = new ArrayList<>();
         expectedPath.add(1);
         expectedPath.add(5);
         expectedPath.add(4);
+        System.out.println("paths added");
         //We check if the returned path is equal to the expected one.
+        System.out.println("result is: " + g.shortestPath(1, 4));
         assertEquals(expectedPath, g.shortestPath(1, 4));
     }
 }
