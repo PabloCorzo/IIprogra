@@ -3,7 +3,6 @@ package util;
 import java.util.Set;
 import java.util.Stack;
 import java.util.HashSet;
-import java.util.LinkedList;
 import java.util.Map;
 import java.util.NoSuchElementException;
 import java.util.PriorityQueue;
@@ -11,9 +10,6 @@ import java.util.Queue;
 import java.util.HashMap;
 import java.util.List;
 import java.util.ArrayList;
-import java.util.ArrayDeque;
-import java.util.concurrent.ArrayBlockingQueue;
-import java.util.stream.Collectors;
 
 public class Graph<V>{
 
@@ -30,9 +26,10 @@ public class Graph<V>{
         //existence checker
         if(this.containsVertex(v)) return false;
 
+        //add the vertex
         adjacencyList.put(v, new HashSet<>());
 
-        return true; //Este código hay que modificarlo.
+        return true; 
     }
 
     /**
@@ -44,15 +41,18 @@ public class Graph<V>{
      * @return `true` si no existía el arco y `false` en caso contrario.
      */
     public boolean addEdge(V v1, V v2){
-        //checks if vertex exists
+
+        //checks if vertex exists, adds them otherwise
         if(!this.containsVertex(v1)) this.addVertex(v1);
         if(!this.containsVertex(v2)) this.addVertex(v2);
 
         //checks if edge existed beforehand
         if(this.obtainAdjacents(v1).contains(v2)) return false;
 
+        //ad v2 to v1's adjacency list: V1 -> V2
         this.adjacencyList.get(v1).add(v2);
-        return true; //Este código hay que modificarlo.
+
+        return true; 
     }
 
     /**
@@ -62,7 +62,11 @@ public class Graph<V>{
      * @return conjunto de vértices adyacentes.
      */
     public Set<V> obtainAdjacents(V v) throws NoSuchElementException{
+
+        //throws an exception if v doesnt exist
         if(!this.containsVertex(v)) throw new NoSuchElementException("Vertice "+v+" no existe en el grafo.");
+
+        //return v's adjacency list
         return this.adjacencyList.get(v);
     }
 
@@ -73,7 +77,11 @@ public class Graph<V>{
      * @return `true` si `v` es un vértice del grafo.
      */
     public boolean containsVertex(V v){
-        return (adjacencyList.containsKey(v) || adjacencyList.containsValue(v));
+
+        //see if it appears on the adjacency list
+        return (adjacencyList.containsKey(v));
+        //OTHER WAY:
+        // return (adjacencyList.containsKey(v) || adjacencyList.containsValue(v));
     }
 
     /**
@@ -82,11 +90,14 @@ public class Graph<V>{
      */
     @Override
     public String toString(){
+
         String s = "";
+
         for(V v: this.adjacencyList.keySet()){
             s += "El vertice " + v + "tiene los vertices:";
             s += this.obtainAdjacents(v).toString();
         }
+
         return s; 
     }
 
@@ -100,72 +111,78 @@ public class Graph<V>{
      * entre `v1` y `v2`
      **/
     public List<V> shortestPath(V v1, V v2){
+
         //add to queue 1
         //queep a queue 2 with "pointers": if 1 leads to 2 and 3, the queue (or list) should be [1,1,1]
         //when reached final vertex, see queue 2 to point back 
+        //q will be used to search through the graph
         Queue<V> q = new PriorityQueue<>();
-        ArrayList<V> q2 = new ArrayList<>();
-        HashMap<V,V> q3 = new HashMap<>();
+        //q2 will link a vertex v1 to its vertex that found it: if we go from v1 to v2, v2 will be a key with value v1
+        HashMap<V,V> q2 = new HashMap<>();
+        //Map that links a vertex with a boolean (has been visited or not)
         HashMap<V,Boolean> visitedmap = new HashMap<>();
-        boolean found = false;
+        //initialise the visited map
         for(V v : this.adjacencyList.keySet()) visitedmap.put(v, false);
+
+        //flag to stop loop once final vertex is found
+        boolean found = false;
+
+        //add first vertex to the queue, to the map of visited vertex and make it point to itself
         q.add(v1);
         visitedmap.put(v1, true);
-        q2.add(v1);
-        q3.put(v1, v1);
-        System.out.println(1);
+        q2.put(v1, v1);
+
+        //while final vertex hasnt been found
         while (!found) {
+
+            //get next vertex in queue
             V i = q.peek();
             for(V v : this.obtainAdjacents(i)){
-                System.out.println("testing " + i);
+
+                //if it is the final vertex, make it point back and turn the flag on, breaking the while loop
                 if(v == v2){
-                    q2.add(i);
-                    q3.put(v,i);
+                    q2.put(v,i);
                     found = true;
-                    System.out.println("broke boy");
                     break;
                 }
+
+                //if vertex is "new", add it to the queue, to the map pointing to the vertex we just came from and mark as visited
                 if(!visitedmap.get(v)){
-                System.out.println("added "+ v);
-                q.add(v);
-                q2.add(i);
-                q3.put(v, i);
-                visitedmap.put(v, true);
+                    q.add(v);
+                    q2.put(v, i);
+                    visitedmap.put(v, true);
                 }
+
+                //remove the element in queue we just used
                 q.remove();
-            
         }
-    }   
-    //[1,2,3,4,5,6,7]
-    //[1,1,1,2,3,4,6]
+    } 
+    
+    //mark a variable to iterate back through the map of pointers
     V trackback = v2;
+
+    //stack to keep the path. Since the path is being added backwards, if we empty the stack on an array, it will be in the correct order
     Stack<V> reversepath = new Stack<>();
+    
+    //array to emtpy the stack on
     ArrayList<V> path = new ArrayList<>(); 
+
+    //add the first element since the loop will stop without adding it
     path.add(v1);
+
+    //if we havent reached the first element yet, add the vertex to the stack to the array and keep going back
     while(trackback != v1){
         reversepath.add(trackback);
-        trackback = q3.get(trackback);
-    }
-    while(!reversepath.isEmpty()){
-        path.add(reversepath.pop());
-    }
-        return path;
+        trackback = q2.get(trackback);
     }
 
-    public static void main(String[] args) {
-        Graph<Integer> g = new Graph<>();
-        g.addVertex(1);
-        g.addVertex(2);
-        g.addVertex(3);
-        g.addVertex(4);
-        g.addVertex(5);
-        g.addVertex(6);
-        g.addEdge(1, 2);
-        g.addEdge(2, 3);
-        g.addEdge(3, 4);
-        g.addEdge(4, 5);
-        g.addEdge(5, 6);
-        g.addEdge(6, 1);
+    //empty the stack on the array so it gets sorted
+    while(!reversepath.isEmpty()){
+        path.add(reversepath.pop());
+    }  
+
+    //return the path
+    return path;
     }
 }
 
