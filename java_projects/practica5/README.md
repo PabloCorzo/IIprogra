@@ -1,4 +1,4 @@
-CALCULADOR DE CAMINO MINIMO ENTRE DOS VERTICES
+CALCULADOR DE CAMINO MÍNIMO ENTRE DOS VÉRTICES
 
 El código contiene operaciones básicas sobre grafos dirigidos: añadir vértice, añadir arista dirigida, obtener adyacentes de un vértice, comprobar existencia de un vértice y un método tostring que devuelve un string con todas las adyacencias de cada vértice en el grafo. Además, hay un metodo (shortestPath) que toma como parámetros dos vértices y devuelve el camino más corto del primero al segundo usando un algoritmo de búsqueda por anchura, que va avanzando por varios caminos a la vez mediante una cola para asegurar que si encuentra el camino sea siempre el de menor distancia. Para no repetir vértices mediante la búsqueda, son añadidos a un mapa con un valor booleano que indica si ya han sido visitados. además también hace uso de un segundo mapa que tiene de llave los vértices y de valor el vértice desde que se encontró; Esto permite que cuando se llegue a v2, se pueda hacer backtracking, añadiendo el camino inverso hasta llegar a v1 en una pila para poder vaciarla en un array y que el array contenga el camino ordenado.
 
