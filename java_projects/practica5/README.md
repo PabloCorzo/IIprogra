@@ -1,22 +1,22 @@
-CALCULADOR DE DISTANCIAS DE PALABRAS
+CALCULADOR DE CAMINO MINIMO ENTRE DOS VERTICES
 
-El codigo consiste en la introduccion de dos palabras para calcular el minimo numero de cambios posibles para convertir la segunda palabra en la primera
+El código contiene operaciones básicas sobre grafos dirigidos: añadir vértice, añadir arista dirigida, obtener adyacentes de un vértice, comprobar existencia de un vértice y un método tostring que devuelve un string con todas las adyacencias de cada vértice en el grafo. Además, hay un metodo (shortestPath) que toma como parámetros dos vértices y devuelve el camino más corto del primero al segundo usando un algoritmo de búsqueda por anchura, que va avanzando por varios caminos a la vez mediante una cola para asegurar que si encuentra el camino sea siempre el de menor distancia. Para no repetir vértices mediante la búsqueda, son añadidos a un mapa con un valor booleano que indica si ya han sido visitados. además también hace uso de un segundo mapa que tiene de llave los vértices y de valor el vértice desde que se encontró; Esto permite que cuando se llegue a v2, se pueda hacer backtracking, añadiendo el camino inverso hasta llegar a v1 en una pila para poder vaciarla en un array y que el array contenga el camino ordenado.
+
 INSTALACION Y USO 
- 1. Instalar el directorio practica4 y tener una JVM
- 2. Para modificar las palabras, cambiar los valores s1 y s2 en src/app/Main.java, linea 12
- 3. Para ejecutar, llamar desde el directorio raiz los siguientes comandos usando git bash:
-  make limpiar
-  make compilar
-  make ejecutar
- 4. El resultado aparecera escrito en la terminal
+ 1. Instalar el directorio practica5 y tener una JVM
+ 2. Para modificar los grafos, cambiar los valores de la clase test o usar App.java
+ 3. Para ejecutar, llamar desde el directorio raíz los siguientes comandos usando git bash:
+  mvn package -> compilar y ejecutar tests
+ 5. El resultado aparecerá escrito en la terminal
 ESTRUCTURA DEL CODIGO
  1. Src/
-  app/Main.java (llamada del codigo fuente)
-  maths/Distance.java (codigo fuente)
+  main/App.java (llamada del código fuente)
+  util/Graph.java (código fuente)
  2. Bin/
   archivos class
- 3. makefile (para ejecucion simplificada)
- 4. ReadMe (explicacion)
+ 3. ReadMe (explicacion)
+ 4. Target
+   archivos creados por maven, como el javadoc o los resultados de tests
 
 Autor - Pablo Corzo, dueño del repositorio
 
