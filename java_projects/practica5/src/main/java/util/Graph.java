@@ -136,6 +136,7 @@ public class Graph<V>{
         while (!found) {
 
             //get next vertex in queue
+        if(!q.isEmpty()){
             V i = q.peek();
             for(V v : this.obtainAdjacents(i)){
 
@@ -155,6 +156,8 @@ public class Graph<V>{
 
                 //remove the element in queue we just used
                 q.remove();
+            }
+            if(q.isEmpty()) return new ArrayList<V>();
         }
     } 
     
